@@ -1,0 +1,159 @@
+local library = loadstring(game:HttpGet("https://github.com/GoHamza/AppleLibrary/blob/main/main.lua?raw=true"))()
+
+local window = library:init("Admins Scripts Troll More", true, Enum.KeyCode.B, true)
+
+window:Divider("Admins")
+
+local sectionA = window:Section("Admin Scripts")
+sectionA:Label("Tip:Key B Is Colse Menu.")
+
+sectionA:Divider("Admins Fly Speed More")
+
+sectionA:Button("infiniteyield", function()
+   wait(1)   
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+print("Execute infiniteyield.")
+end)
+
+sectionA:Button("Nameless Admin", function()
+   print("Button clicked.")
+   wait(1)
+   print("Nameless Admin Executed")
+   print("Lag !")
+   wait(0.4)
+   print("Lag !")
+   wait(0.2)
+   print("Lag !")
+   print("Execute...")
+loadstring(game:HttpGet('https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source'))()
+   print("Lag !")
+   print("Lag !")
+end)
+
+
+sectionA:Button("OPFinality", function()
+      print("Button clicked.")
+	 print("Execute...")
+	 wait(1)
+	 print("OPFinality")
+   loadstring(game:HttpGet('https://gist.githubusercontent.com/torikooo/54d50877a1388727ea9ca2fa07f3f593/raw/64971f032b6af3023305c57dba0810073a6d5a6b/OP%2520Finality%2520Trolling%2520GUI'))()
+end)
+
+sectionA:Button("Reviz Admin v2", function()
+      print("Button clicked.")
+     print("Execute...")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Pa1ntex/reviz-admin-v2-script-FE/refs/heads/main/Reviz%20admin%20v2%20FE"))()
+end)
+
+window:Divider("Troll Scripts")
+
+local sectionC = window:Section("Troll Scripts")
+
+sectionC:Label("Troll Scripts More")
+
+sectionC:Button("Fling Troll", function()
+wait(1)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/new381264/Troll-Script/refs/heads/main/Fling?token=GHSAT0AAAAAADBAGB72PTM4E75FYVBQCU34Z7B6J6A"))()
+print("Execute Fling")
+end)
+sectionC:Label("Fling Is Game Is CanCollide Is activated !")
+
+window:Divider("Hacker Scripts")
+
+local sectionH = window:Section("Hackers")
+
+sectionH:Divider("Turning a Hackers")
+
+sectionH:Button("John Doe Fix Sound", function()
+print("Turning a Hacker...")
+print("Turning a Hacker John Doe !")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/retpirato/Roblox-Scripts/refs/heads/master/John%20Doe.lua"))()
+end)
+
+window:Divider("Farm Games")
+
+local sectionT = window:Section("Aoto-farm")
+
+sectionT:Divider("Another Game Aoto-farm")
+
+sectionT:Switch("Aoto-Farm FTAP", false, function(a)
+
+   print(a)
+end)
+
+
+
+window:Divider("Games")
+
+
+local sectionB = window:Section("Another Game")
+
+
+sectionB:Divider("Another Game Scripts")
+
+
+sectionB:Button("Rejoin Server", function()
+repeat
+    wait()  
+until game:IsLoaded() 
+game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId) 
+print("Rejoin...")
+end)
+
+sectionB:Label("------------------------")
+
+sectionB:Button("FTAP", function() window:Notify2("From Another Game", "Game Name Fling Things and People ! You Need To Enter The Game This Only Works Within That Game Script Is Key", "Continue", "No", "rbxassetid://12608259004",
+   function()
+	   print("Yes")
+	   print("Lag !")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/BlizTBr/scripts/main/FTAP.lua"))()
+print("Execute...")
+print("Execute FTAP !")
+print("Lag !")
+print("Lag !")
+window:TempNotify("Another Game Scripts ", "Is Another Game Get Bugs Is Key More !", "rbxassetid://12608259004")
+local l = loadstring(game:HttpGet("https://raw.githubusercontent.com/laagginq/ui-libraries/main/dxhooknotify/src.lua", true))()
+Wait(5)
+l:Notify("Working","Is Bug Key FTAP !",10)
+   end,
+   function()
+       print("No")
+   end)
+end)
+
+sectionB:Button("Ninja Hub", function() window:Notify2("From Another Game", "Game Name Fling Things and People ! You Need To Enter The Game This Only Works Within That Game Script Is No Key ", "Continue", "No", "rbxassetid://12608259004",
+   function()
+      window:TempNotify("Code:Library", "Bug Button-Continue-No", "rbxassetid://12608259004")
+	   print("Yes")
+print("Execute...")
+print("Execute FTAP Ninja Hub !")
+local library = loadstring(game:HttpGet("https://github.com/GoHamza/AppleLibrary/blob/main/main.lua?raw=true"))()
+local window = library:init("You Is Restart library", true, Enum.KeyCode.B, true)
+local l = loadstring(game:HttpGet("https://raw.githubusercontent.com/laagginq/ui-libraries/main/dxhooknotify/src.lua", true))()
+l:Notify("Code:library Bug Working","is still Working Script",5)
+l:Notify("Support","Discord",5)
+loadstring(game:HttpGet("https://rawscripts.net/raw/Fling-Things-and-People-Ninja-hub-FTAP-25002"))()
+print("Lag !")
+print("Lag !")
+   end,
+   function()
+       print("No")
+   end)
+end)
+
+
+sectionB:Button("Get In The Game FTAP", function()
+print("FTAP Teleport...")
+game:GetService('TeleportService'):Teleport(6961824067)
+Wait(5)
+print("FTAP Teleport Failed Ping ?")
+
+end)
+
+sectionB:Label("------------------------")
+
+
+window:GreenButton(function()
+   print("You clicked the green button!")
+end)
+sectionA:Select()
