@@ -1,5 +1,6 @@
 local library = loadstring(game:HttpGet("https://github.com/GoHamza/AppleLibrary/blob/main/main.lua?raw=true"))()
-
+settings().Network.IncomingReplicationLag = -1000
+settings().Rendering.EagerBulkExecution = false
 local window = library:init("Admins Scripts Troll More", true, Enum.KeyCode.B, true)
 
 window:Divider("Admins")
@@ -28,6 +29,7 @@ sectionA:Button("Nameless Admin", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source'))()
    print("Lag !")
    print("Lag !")
+   settings().Rendering.EagerBulkExecution = false
 end)
 
 
@@ -53,10 +55,251 @@ sectionC:Label("Troll Scripts More")
 
 sectionC:Button("Fling Troll", function()
 wait(1)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/new381264/Troll-Script/refs/heads/main/Fling?token=GHSAT0AAAAAADBAGB72PTM4E75FYVBQCU34Z7B6J6A"))()
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Script Executed";
+    Text = "Fling All";
+    Duration = 1;
+})
+
+local Targets = {"All"} -- "All", "Target Name", "arian_was_here"
+
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+
+local AllBool = false
+
+local GetPlayer = function(Name)
+    Name = Name:lower()
+    if Name == "all" or Name == "others" then
+        AllBool = true
+        return
+    elseif Name == "random" then
+        local GetPlayers = Players:GetPlayers()
+        if table.find(GetPlayers,Player) then table.remove(GetPlayers,table.find(GetPlayers,Player)) end
+        return GetPlayers[math.random(#GetPlayers)]
+    elseif Name ~= "random" and Name ~= "all" and Name ~= "others" then
+        for _,x in next, Players:GetPlayers() do
+            if x ~= Player then
+                if x.Name:lower():match("^"..Name) then
+                    return x;
+                elseif x.DisplayName:lower():match("^"..Name) then
+                    return x;
+                end
+            end
+        end
+    else
+        return
+    end
+end
+
+local Message = function(_Title, _Text, Time)
+    game:GetService("StarterGui"):SetCore("SendNotification", {Title = _Title, Text = _Text, Duration = Time})
+end
+
+local SkidFling = function(TargetPlayer)
+    local Character = Player.Character
+    local Humanoid = Character and Character:FindFirstChildOfClass("Humanoid")
+    local RootPart = Humanoid and Humanoid.RootPart
+
+    local TCharacter = TargetPlayer.Character
+    local THumanoid
+    local TRootPart
+    local THead
+    local Accessory
+    local Handle
+
+    if TCharacter:FindFirstChildOfClass("Humanoid") then
+        THumanoid = TCharacter:FindFirstChildOfClass("Humanoid")
+    end
+    if THumanoid and THumanoid.RootPart then
+        TRootPart = THumanoid.RootPart
+    end
+    if TCharacter:FindFirstChild("Head") then
+        THead = TCharacter.Head
+    end
+    if TCharacter:FindFirstChildOfClass("Accessory") then
+        Accessory = TCharacter:FindFirstChildOfClass("Accessory")
+    end
+    if Accessoy and Accessory:FindFirstChild("Handle") then
+        Handle = Accessory.Handle
+    end
+
+    if Character and Humanoid and RootPart then
+        if RootPart.Velocity.Magnitude < 50 then
+            getgenv().OldPos = RootPart.CFrame
+        end
+        if THumanoid and THumanoid.Sit and not AllBool then
+            return Message("Error Occurred", "Targeting is sitting", 5) -- u can remove dis part if u want lol
+        end
+        if THead then
+            workspace.CurrentCamera.CameraSubject = THead
+        elseif not THead and Handle then
+            workspace.CurrentCamera.CameraSubject = Handle
+        elseif THumanoid and TRootPart then
+            workspace.CurrentCamera.CameraSubject = THumanoid
+        end
+        if not TCharacter:FindFirstChildWhichIsA("BasePart") then
+            return
+        end
+        
+        local FPos = function(BasePart, Pos, Ang)
+            RootPart.CFrame = CFrame.new(BasePart.Position) * Pos * Ang
+            Character:SetPrimaryPartCFrame(CFrame.new(BasePart.Position) * Pos * Ang)
+            RootPart.Velocity = Vector3.new(9e7, 9e7 * 10, 9e7)
+            RootPart.RotVelocity = Vector3.new(9e8, 9e8, 9e8)
+        end
+        
+        local SFBasePart = function(BasePart)
+            local TimeToWait = 2
+            local Time = tick()
+            local Angle = 0
+
+            repeat
+                if RootPart and THumanoid then
+                    if BasePart.Velocity.Magnitude < 50 then
+                        Angle = Angle + 100
+
+                        FPos(BasePart, CFrame.new(0, 1.5, 0) + THumanoid.MoveDirection * BasePart.Velocity.Magnitude / 1.25, CFrame.Angles(math.rad(Angle),0 ,0))
+                        task.wait()
+
+                        FPos(BasePart, CFrame.new(0, -1.5, 0) + THumanoid.MoveDirection * BasePart.Velocity.Magnitude / 1.25, CFrame.Angles(math.rad(Angle), 0, 0))
+                        task.wait()
+
+                        FPos(BasePart, CFrame.new(2.25, 1.5, -2.25) + THumanoid.MoveDirection * BasePart.Velocity.Magnitude / 1.25, CFrame.Angles(math.rad(Angle), 0, 0))
+                        task.wait()
+
+                        FPos(BasePart, CFrame.new(-2.25, -1.5, 2.25) + THumanoid.MoveDirection * BasePart.Velocity.Magnitude / 1.25, CFrame.Angles(math.rad(Angle), 0, 0))
+                        task.wait()
+
+                        FPos(BasePart, CFrame.new(0, 1.5, 0) + THumanoid.MoveDirection,CFrame.Angles(math.rad(Angle), 0, 0))
+                        task.wait()
+
+                        FPos(BasePart, CFrame.new(0, -1.5, 0) + THumanoid.MoveDirection,CFrame.Angles(math.rad(Angle), 0, 0))
+                        task.wait()
+                    else
+                        FPos(BasePart, CFrame.new(0, 1.5, THumanoid.WalkSpeed), CFrame.Angles(math.rad(90), 0, 0))
+                        task.wait()
+
+                        FPos(BasePart, CFrame.new(0, -1.5, -THumanoid.WalkSpeed), CFrame.Angles(0, 0, 0))
+                        task.wait()
+
+                        FPos(BasePart, CFrame.new(0, 1.5, THumanoid.WalkSpeed), CFrame.Angles(math.rad(90), 0, 0))
+                        task.wait()
+                        
+                        FPos(BasePart, CFrame.new(0, 1.5, TRootPart.Velocity.Magnitude / 1.25), CFrame.Angles(math.rad(90), 0, 0))
+                        task.wait()
+
+                        FPos(BasePart, CFrame.new(0, -1.5, -TRootPart.Velocity.Magnitude / 1.25), CFrame.Angles(0, 0, 0))
+                        task.wait()
+
+                        FPos(BasePart, CFrame.new(0, 1.5, TRootPart.Velocity.Magnitude / 1.25), CFrame.Angles(math.rad(90), 0, 0))
+                        task.wait()
+
+                        FPos(BasePart, CFrame.new(0, -1.5, 0), CFrame.Angles(math.rad(90), 0, 0))
+                        task.wait()
+
+                        FPos(BasePart, CFrame.new(0, -1.5, 0), CFrame.Angles(0, 0, 0))
+                        task.wait()
+
+                        FPos(BasePart, CFrame.new(0, -1.5 ,0), CFrame.Angles(math.rad(-90), 0, 0))
+                        task.wait()
+
+                        FPos(BasePart, CFrame.new(0, -1.5, 0), CFrame.Angles(0, 0, 0))
+                        task.wait()
+                    end
+                else
+                    break
+                end
+            until BasePart.Velocity.Magnitude > 500 or BasePart.Parent ~= TargetPlayer.Character or TargetPlayer.Parent ~= Players or not TargetPlayer.Character == TCharacter or THumanoid.Sit or Humanoid.Health <= 0 or tick() > Time + TimeToWait
+        end
+        
+        workspace.FallenPartsDestroyHeight = 0/0
+        
+        local BV = Instance.new("BodyVelocity")
+        BV.Name = "EpixVel"
+        BV.Parent = RootPart
+        BV.Velocity = Vector3.new(9e8, 9e8, 9e8)
+        BV.MaxForce = Vector3.new(1/0, 1/0, 1/0)
+        
+        Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated, false)
+        
+        if TRootPart and THead then
+            if (TRootPart.CFrame.p - THead.CFrame.p).Magnitude > 5 then
+                SFBasePart(THead)
+            else
+                SFBasePart(TRootPart)
+            end
+        elseif TRootPart and not THead then
+            SFBasePart(TRootPart)
+        elseif not TRootPart and THead then
+            SFBasePart(THead)
+        elseif not TRootPart and not THead and Accessory and Handle then
+            SFBasePart(Handle)
+        else
+            return Message("Error Occurred", "Target is missing everything", 5)
+        end
+        
+        BV:Destroy()
+        Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated, true)
+        workspace.CurrentCamera.CameraSubject = Humanoid
+        
+        repeat
+            RootPart.CFrame = getgenv().OldPos * CFrame.new(0, .5, 0)
+            Character:SetPrimaryPartCFrame(getgenv().OldPos * CFrame.new(0, .5, 0))
+            Humanoid:ChangeState("GettingUp")
+            table.foreach(Character:GetChildren(), function(_, x)
+                if x:IsA("BasePart") then
+                    x.Velocity, x.RotVelocity = Vector3.new(), Vector3.new()
+                end
+            end)
+            task.wait()
+        until (RootPart.Position - getgenv().OldPos.p).Magnitude < 25
+        workspace.FallenPartsDestroyHeight = getgenv().FPDH
+    else
+        return Message("Error Ocurrido", "El Script A Fallado", 5)
+    end
+end
+
+if not Welcome then Message("By Augus X", "", 6) end
+getgenv().Welcome = true
+if Targets[1] then for _,x in next, Targets do GetPlayer(x) end else return end
+
+if AllBool then
+    for _,x in next, Players:GetPlayers() do
+        SkidFling(x)
+    end
+end
+
+for _,x in next, Targets do
+    if GetPlayer(x) and GetPlayer(x) ~= Player then
+        if GetPlayer(x).UserId ~= 2924145477 then
+            local TPlayer = GetPlayer(x)
+            if TPlayer then
+                SkidFling(TPlayer)
+            end
+        else
+            Message("ERROR AL ASER FLING", "", 8)
+        end
+    elseif not GetPlayer(x) and not AllBool then
+        Message("ERROR OCURRIDO", "NO SE LE ISO FLING", 8)
+    end
+end
 print("Execute Fling")
 end)
 sectionC:Label("Fling Is Game Is CanCollide Is activated !")
+
+window:Divider("Vehicle Is Gravity Protection")
+
+local sectionG = window:Section("Protections Vehicles")
+
+sectionG:Switch("Protections Vehicle",false,function(a)
+game:GetService("Workspace").Gravity = 102
+print(a)
+end)
+sectionG:Label("Tip:Is Gravity Is 102 Is Gravity Normal Is Rejoin")
+
+sectionG:Label("Name of the Game is Cart Ride Around Nothing")
+
 
 window:Divider("Hacker Scripts")
 
@@ -68,6 +311,7 @@ sectionH:Button("John Doe Fix Sound", function()
 print("Turning a Hacker...")
 print("Turning a Hacker John Doe !")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/retpirato/Roblox-Scripts/refs/heads/master/John%20Doe.lua"))()
+settings().Rendering.EagerBulkExecution = false
 end)
 
 window:Divider("Farm Games")
@@ -98,6 +342,7 @@ repeat
 until game:IsLoaded() 
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId) 
 print("Rejoin...")
+settings().Rendering.EagerBulkExecution = false
 end)
 
 sectionB:Label("------------------------")
@@ -111,10 +356,12 @@ print("Execute...")
 print("Execute FTAP !")
 print("Lag !")
 print("Lag !")
+settings().Rendering.EagerBulkExecution = false
 window:TempNotify("Another Game Scripts ", "Is Another Game Get Bugs Is Key More !", "rbxassetid://12608259004")
 local l = loadstring(game:HttpGet("https://raw.githubusercontent.com/laagginq/ui-libraries/main/dxhooknotify/src.lua", true))()
 Wait(5)
 l:Notify("Working","Is Bug Key FTAP !",10)
+l:Notify("Working","Tip: Is Buy Soon...",3)
    end,
    function()
        print("No")
@@ -133,6 +380,7 @@ local l = loadstring(game:HttpGet("https://raw.githubusercontent.com/laagginq/ui
 l:Notify("Code:library Bug Working","is still Working Script",5)
 l:Notify("Support","Discord",5)
 loadstring(game:HttpGet("https://rawscripts.net/raw/Fling-Things-and-People-Ninja-hub-FTAP-25002"))()
+settings().Rendering.EagerBulkExecution = false
 print("Lag !")
 print("Lag !")
    end,
@@ -143,14 +391,64 @@ end)
 
 
 sectionB:Button("Get In The Game FTAP", function()
+settings().Rendering.EagerBulkExecution = false
 print("FTAP Teleport...")
 game:GetService('TeleportService'):Teleport(6961824067)
 Wait(5)
 print("FTAP Teleport Failed Ping ?")
-
 end)
 
 sectionB:Label("------------------------")
+
+window:Divider("Settings Is Games")
+
+
+local sectionK = window:Section("Settings Is Roblox")
+
+
+sectionK:Divider("Roblox Settings Game")
+
+
+sectionK:Button("Roblox Crash", function()
+repeat
+warn("Roblox Crash")
+settings().Rendering.EagerBulkExecution = true
+until condition
+end)
+
+
+sectionK:Label("!You Is Button Crash !.")
+
+sectionK:Button("Roblox Lag", function()
+settings().Rendering.EagerBulkExecution = true
+repeat
+game.StarterGui:SetCore("TopbarEnabled", false)
+Wait()
+game.StarterGui:SetCore("TopbarEnabled", true)
+Wait()
+warn("Roblox Lag")
+until condition settings().Rendering.EagerBulkExecution = false
+end)
+
+
+sectionK:Button("Roblox FPS More", function()
+settings().Network.IncomingReplicationLag = -1000
+settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
+settings().Rendering.EagerBulkExecution = false
+game.StarterGui:SetCore("TopbarEnabled", true)
+game:GetService("Lighting").GlobalShadows = false
+Wait(1)
+game:GetService("Lighting").ShadowSoftness = 1
+Wait(1)
+game:GetService("MaterialService").Use2022Materials = true
+Wait(1)
+for _, descendant in pairs(game.Workspace:GetDescendants()) do
+    if descendant:IsA("ParticleEmitter") then
+        descendant.Enabled = false
+		Wait(4.5)
+    end
+end
+end)
 
 
 window:GreenButton(function()
