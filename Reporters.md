@@ -1,3 +1,5 @@
+talking in this game About Game | Trolley ride around nothing
+-
 Reporters Some Bugs Is Look
 -
 ![Captura de tela 2025-03-29 212915](https://github.com/user-attachments/assets/d0c63870-5562-4c33-ac1c-5052bde16666)
