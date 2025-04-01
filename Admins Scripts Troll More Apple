@@ -293,10 +293,10 @@ window:Divider("Vehicle Is Gravity Protection")
 local sectionG = window:Section("Protections Vehicles")
 
 sectionG:Switch("Protections Vehicle",false,function(a)
-game:GetService("Workspace").Gravity = 102
+game:GetService("Workspace").Gravity = 100
 print(a)
 end)
-sectionG:Label("Tip:Is Gravity Is 102 Is Gravity Normal Is Rejoin")
+sectionG:Label("Tip:Is Gravity Is 100 Is Gravity Normal Is Rejoin")
 
 sectionG:Label("Name of the Game is Cart Ride Around Nothing")
 
@@ -314,18 +314,19 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/retpirato/Roblox-Scri
 settings().Rendering.EagerBulkExecution = false
 end)
 
-window:Divider("Farm Games")
+window:Divider("Object Fly Games")
 
-local sectionT = window:Section("Aoto-farm")
+local sectionT = window:Section("Object Fly")
 
-sectionT:Divider("Another Game Aoto-farm")
+sectionT:Divider("Another Game Object-Fly")
 
-sectionT:Switch("Aoto-Farm FTAP", false, function(a)
-
+sectionT:Switch("FTAP Object Fly You Gravity", false, function(a)
+game:GetService("Workspace").Gravity = 10
+settings().Rendering.EagerBulkExecution = false
    print(a)
 end)
 
-
+sectionG:Label("Tip:Is Gravity Is 10 Low Max Is Gravity Normal Is Rejoin")
 
 window:Divider("Games")
 
