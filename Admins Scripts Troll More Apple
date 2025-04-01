@@ -326,7 +326,7 @@ settings().Rendering.EagerBulkExecution = false
    print(a)
 end)
 
-sectionG:Label("Tip:Is Gravity Is 10 Low Max Is Gravity Normal Is Rejoin")
+sectionT:Label("Tip:Is Gravity Is 10 Low Max Is Gravity Normal Is Rejoin")
 
 window:Divider("Games")
 
