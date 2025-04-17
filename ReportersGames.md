@@ -19,6 +19,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/BlizTBr/scripts/main/
 
 By: BlizTBr
 
--
+
 Talking Is Script Admins Troll More !
 Talking in This Game About Game |
