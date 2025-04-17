@@ -314,19 +314,137 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/retpirato/Roblox-Scri
 settings().Rendering.EagerBulkExecution = false
 end)
 
-window:Divider("Object Fly Games")
+window:Divider("Object Fly FTAP")
 
-local sectionT = window:Section("Object Fly")
+local sectionT = window:Section("Object Fly More")
 
-sectionT:Divider("Another Game Object-Fly")
+sectionT:Divider("Game Object-Fly More FTAP")
 
-sectionT:Switch("FTAP Object Fly You Gravity", false, function(a)
-game:GetService("Workspace").Gravity = 10
+sectionT:Button("Anti-Grab Max Pro Protection", function()
+      print("Button clicked.")
+print("Anti-Grab Max Pro Protection God Pro")
+local Players = game:GetService("Players")
+local LastPosition = {}
+
+local function NewPlayer(player)
+	player.CharacterAdded:Connect(function()
+		LastPosition[player.UserId] = nil
+	end)
+	spawn(function()
+		while true do
+			wait()
+			local char = player.Character
+			if char ~= nil then
+				local humanoid = char:FindFirstChildOfClass("Humanoid")
+				if humanoid ~= nil and char.PrimaryPart ~= nil then
+					local CurrentPosition = char:GetPrimaryPartCFrame()
+					local TempLastPosition = LastPosition[player.UserId]
+					if TempLastPosition ~= nil then
+						local BeforePosition = Vector3.new(TempLastPosition.X, 0, TempLastPosition.Z)
+						local NewPosition = Vector3.new(CurrentPosition.X, 0, CurrentPosition.Z)
+
+						local Distance = (BeforePosition - NewPosition).magnitude
+						local MaxDistance = humanoid.WalkSpeed * 2.5
+						if Distance > MaxDistance then
+							char:SetPrimaryPartCFrame(TempLastPosition)
+							continue
+						end
+					end
+					LastPosition[player.UserId] = CurrentPosition
+				end
+			end
+		end
+	end)
+end
+Players.PlayerAdded:Connect(NewPlayer)
+for _, player in pairs(Players:GetPlayers()) do
+	NewPlayer(player)
+end
 settings().Rendering.EagerBulkExecution = false
-   print(a)
 end)
 
-sectionT:Label("Tip:Is Gravity Is 10 Low Max Is Gravity Normal Is Rejoin")
+sectionT:Button("FTAP Object Fly You Gravity", function()
+game:GetService("Workspace").Gravity = 10
+settings().Rendering.EagerBulkExecution = false
+end)
+
+sectionT:Label("Tip:Is Gravity Is 10 Is Gravity Normal Is Rejoin")
+
+sectionT:Label("Tip:Anti-Grab is Cool")
+
+
+sectionT:Button("Anti-kick", function()
+      print("Button clicked.")
+print("Anti-kick On")	  
+game:GetService("Workspace").Gravity = 1000
+settings().Rendering.EagerBulkExecution = false
+end)
+
+sectionT:Button("Anti-kick God Pro", function()
+      print("Button clicked.")
+print("Anti-kick On God Pro")	
+local Players = game:GetService("Players")
+local LastPosition = {}
+
+local function NewPlayer(player)
+	player.CharacterAdded:Connect(function()
+		LastPosition[player.UserId] = nil
+	end)
+	spawn(function()
+		while true do
+			wait()
+			local char = player.Character
+			if char ~= nil then
+				local humanoid = char:FindFirstChildOfClass("Humanoid")
+				if humanoid ~= nil and char.PrimaryPart ~= nil then
+					local CurrentPosition = char:GetPrimaryPartCFrame()
+					local TempLastPosition = LastPosition[player.UserId]
+					if TempLastPosition ~= nil then
+						local BeforePosition = Vector3.new(TempLastPosition.X, 0, TempLastPosition.Z)
+						local NewPosition = Vector3.new(CurrentPosition.X, 0, CurrentPosition.Z)
+
+						local Distance = (BeforePosition - NewPosition).magnitude
+						local MaxDistance = humanoid.WalkSpeed * -9999
+						if Distance > MaxDistance then
+							char:SetPrimaryPartCFrame(TempLastPosition)
+							continue
+						end
+					end
+					LastPosition[player.UserId] = CurrentPosition
+				end
+			end
+		end
+	end)
+end
+Players.PlayerAdded:Connect(NewPlayer)
+for _, player in pairs(Players:GetPlayers()) do
+	NewPlayer(player)
+end
+settings().Rendering.EagerBulkExecution = false
+end)
+
+sectionT:Label("Tip:Anti-kick God Pro Is Cool")
+
+
+sectionT:Button("Anti-kick God Pro off", function()
+      print("Button clicked.")
+print("Anti-kick off God Pro - Rejoin")	
+repeat
+    wait()  
+until game:IsLoaded() 
+game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId) 
+print("Rejoin...")
+settings().Rendering.EagerBulkExecution = false
+end)
+
+sectionT:Button("OFF Anti-kick", function()
+      print("Button clicked.")
+print("Anti-kick Off !")	  
+game:GetService("Workspace").Gravity = 100
+settings().Rendering.EagerBulkExecution = false
+end)
+
+sectionT:Label("Tip:Is Gravity Anti-kick lags Bugs You is Sefe")
 
 window:Divider("Games")
 
