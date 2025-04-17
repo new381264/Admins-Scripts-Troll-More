@@ -13,7 +13,7 @@ The Most You Can Go In The Spring Breaker | Speed 15 Is 20
 Next Games Bugs Soon
 -
 FTAP Is Soon Bugs lag kick More
-Script Is Use Safe | 
+Script Is Use Safe
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/BlizTBr/scripts/main/FTAP.lua"))()
 
