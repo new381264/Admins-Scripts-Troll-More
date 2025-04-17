@@ -16,8 +16,8 @@ FTAP Is Soon Bugs lag kick More
 Script Is Use Safe
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/BlizTBr/scripts/main/FTAP.lua"))()
-
 By: BlizTBr
+
 -
 Talking Is Script Admins Troll More !
 Talking in This Game About Game |
